@@ -56,4 +56,5 @@ saveRecordButton.addEventListener("click", function () {
 `;
   tableBody.innerHTML += tableRow;
   console.log(tableRow);
+  // dfd
 });
