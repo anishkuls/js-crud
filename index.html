@@ -25,19 +25,22 @@
                     <th>Monthly Salary</th>
                 </tr>
             </thead>
-            <tbody>
-                <!--        <tr>-->
-                <!--            <td>Viraj Sharma</td>-->
-                <!--            <td>Backend Developer</td>-->
-                <!--            <td>25,000</td>-->
-                <!--            <td><Button>Edit</Button></td>-->
-                <!--            <td><Button>Delete</Button></td>-->
-                <!--        </tr>-->
+            <tbody id="employee-table">
+                <tr>
+                    <td>Viraj Sharma</td>
+                    <td>Backend Developer</td>
+                    <td>25,000</td>
+                    <td><button>Edit</button></td>
+                    <td><button>Delete</button></td>
+                </tr>
+
 
 
             </tbody>
         </table>
 
+
+        <!--Create Module-->
         <div class="entery-form">
             <table class="table">
 
@@ -66,7 +69,7 @@
                                 Select from the dropdown.
                             </span>
                         </td>
-                        <td><input type="text" class="form-control mt-3" placeholder="Normal input">
+                        <td><input type="text" class="form-control mt-3" placeholder="Enter Salary" id="emp-salary">
                             <span id="passwordHelpInline" class="form-text">
                                 Only numeric digits allowed
                             </span>

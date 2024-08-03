@@ -22,30 +22,38 @@
 
 //Employe elements selection
 const empName = document.querySelector("#emp-name"); // Employee Input Name Elementn Selection
-const showEmpNameError = document.querySelector("#emp-name-error");
 
 //Profile elements selection
 const empProfile = document.querySelector("#emp-profile");
-let empProfileValue = empProfile.value;
 
 // Salary elements selection
-const empSalaryInput = document.querySelector("#emp-profile");
+const empSalaryInput = document.querySelector("#emp-salary");
 
 // Button Group
 const saveRecordButton = document.querySelector("#save-record"); // Button element select
 
+// Table
+const tableBody = document.querySelector("#employee-table");
 // Employe Name Value - blank when onload
 
 saveRecordButton.addEventListener("click", function () {
-  empProfileValue = empProfile.value;
-  console.log(empProfileValue);
-  //   const empNameValue = empName.value;
-  //   console.log("Empolye Name is " + empNameValue); // Normal String
-  //   console.log(`Employe name is ${empNameValue}`); // Template Literal
-});
+  const empNameValue = empName.value;
+  const profileValue = empProfile.value;
+  const empSalaryValue = empSalaryInput.value;
 
-// empName.addEventListener("keyup", function () {
-//   const empNameValue = empName.value;
-//   showEmpNameError.textContent = empNameValue;
-//   console.log(empNameValue);
-// });
+  console.log(`Employe name is ${empNameValue}`); // Template Literal
+  console.log(`Employe Profile ${profileValue}`);
+  console.log(`Employe Salary ${empSalaryValue}`);
+
+  const tableRow = `
+<tr>
+    <td>${empNameValue}</td>
+    <td>${profileValue}</td>
+    <td>${empSalaryValue}</td>
+    <td><button>Edit</button></td>
+    <td><button>Delete</button></td>
+</tr>
+`;
+  tableBody.innerHTML += tableRow;
+  console.log(tableRow);
+});
