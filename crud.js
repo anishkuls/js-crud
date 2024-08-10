@@ -36,6 +36,8 @@ const saveRecordButton = document.querySelector("#save-record"); // Button eleme
 const tableBody = document.querySelector("#employee-table");
 // Employe Name Value - blank when onload
 
+attachEditButtonListeners();
+
 saveRecordButton.addEventListener("click", function () {
   const empNameValue = empName.value;
   const profileValue = empProfile.value;
@@ -47,14 +49,47 @@ saveRecordButton.addEventListener("click", function () {
 
   const tableRow = `
 <tr>
-    <td>${empNameValue}</td>
+    <td id="view-emp-name">${empNameValue}</td>
     <td>${profileValue}</td>
     <td>${empSalaryValue}</td>
-    <td><button>Edit</button></td>
+    <td><button class='edit'>Edit</button></td>
     <td><button>Delete</button></td>
 </tr>
 `;
   tableBody.innerHTML += tableRow;
-  console.log(tableRow);
+  editButtonsList = document.querySelectorAll(".edit");
+  empName.value = "";
+  empProfile.value = "";
+  empSalaryInput.value = "";
+
+  attachEditButtonListeners();
   // dfd
 });
+
+// Update :
+
+function attachEditButtonListeners() {
+  const editButtonsList = document.querySelectorAll(".edit"); // nodeList - kind array
+
+  // Attach event listeners to each edit button
+  editButtonsList.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      const row = button.closest("tr"); // Find the closest row
+      console.log(row);
+
+      const empNameValue = row.children[0].textContent;
+      const profileValue = row.children[1].textContent;
+      const empSalaryValue = row.children[2].textContent;
+
+      empName.value = empNameValue;
+      empProfile.value = profileValue;
+      empSalaryInput.value = empSalaryValue;
+
+      row.remove();
+
+      console.log(`Employee Name: ${empNameValue}`);
+      console.log(`Employee Profile: ${profileValue}`);
+      console.log(`Employee Salary: ${empSalaryValue}`);
+    });
+  });
+}
