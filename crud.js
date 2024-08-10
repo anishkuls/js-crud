@@ -37,6 +37,7 @@ const tableBody = document.querySelector("#employee-table");
 // Employe Name Value - blank when onload
 
 attachEditButtonListeners();
+attachDeleteButtonListeners();
 
 saveRecordButton.addEventListener("click", function () {
   const empNameValue = empName.value;
@@ -53,7 +54,7 @@ saveRecordButton.addEventListener("click", function () {
     <td>${profileValue}</td>
     <td>${empSalaryValue}</td>
     <td><button class='edit'>Edit</button></td>
-    <td><button>Delete</button></td>
+    <td><button class='delete-button'>Delete</button></td>
 </tr>
 `;
   tableBody.innerHTML += tableRow;
@@ -63,6 +64,7 @@ saveRecordButton.addEventListener("click", function () {
   empSalaryInput.value = "";
 
   attachEditButtonListeners();
+  attachDeleteButtonListeners();
   // dfd
 });
 
@@ -90,6 +92,18 @@ function attachEditButtonListeners() {
       console.log(`Employee Name: ${empNameValue}`);
       console.log(`Employee Profile: ${profileValue}`);
       console.log(`Employee Salary: ${empSalaryValue}`);
+    });
+  });
+}
+
+function attachDeleteButtonListeners() {
+  const deleteButtonsList = document.querySelectorAll(".delete-button"); // NodeList
+  console.log(deleteButtonsList);
+  // Attach event listeners to each delete button
+  deleteButtonsList.forEach((button) => {
+    button.addEventListener("click", function () {
+      const row = button.closest("tr");
+      row.remove(); // Remove the row from the table
     });
   });
 }
